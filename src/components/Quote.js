@@ -11,7 +11,7 @@ export default class Quote extends React.Component {
     this.props.disliked(this.props.quoteId);
   };
   like = () => {
-    this.setState({ quoteStyling: "liked" });
+    this.props.liked(this.props.quoteId);
   };
   render() {
     return (

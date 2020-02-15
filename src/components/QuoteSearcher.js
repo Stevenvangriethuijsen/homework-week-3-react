@@ -71,6 +71,19 @@ export default class QuoteSearcher extends React.Component {
     this.setState({ quotes: dislikedQuote });
   };
 
+  liked = id => {
+    const likedQuote = this.state.quotes.map(object => {
+      if (object._id === id) {
+        console.log(id, "logging argument id");
+        console.log(object._id, object.quoteStyling);
+        return { ...object, quoteStyling: "liked" };
+      } else {
+        return object;
+      }
+    });
+    this.setState({ quotes: likedQuote });
+  };
+
   render() {
     if (this.state.fetching) {
       return <h3>Loading...</h3>;
@@ -102,6 +115,7 @@ export default class QuoteSearcher extends React.Component {
                 quoteId={object._id}
                 style={object.quoteStyling}
                 disliked={this.disliked}
+                liked={this.liked}
               />
             );
           })}
