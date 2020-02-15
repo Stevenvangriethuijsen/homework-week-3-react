@@ -7,7 +7,8 @@ export default class Quote extends React.Component {
   };
 
   dislike = () => {
-    this.setState({ quoteStyling: "disliked" });
+    console.log("test idquote", this.props.quoteId);
+    this.props.disliked(this.props.quoteId);
   };
   like = () => {
     this.setState({ quoteStyling: "liked" });
@@ -15,8 +16,9 @@ export default class Quote extends React.Component {
   render() {
     return (
       <div className="quoteWrapper">
+        {/* {console.log(this.props.quoteId, "checking quoteid")} */}
         <div className="quoteText">
-          <p className={this.state.quoteStyling}>{this.props.text}</p>
+          <p className={this.props.style}>{this.props.text}</p>
         </div>
         <div className="quoteAuthor">
           By: {this.props.author}
