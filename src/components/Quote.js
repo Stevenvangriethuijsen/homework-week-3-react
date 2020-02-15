@@ -1,6 +1,10 @@
 import React from "react";
+import "./Quote.css";
 
 export default class Quote extends React.Component {
+  state = {
+    numlikes: 0
+  };
   render() {
     return (
       <div className="quoteWrapper">
@@ -8,7 +12,9 @@ export default class Quote extends React.Component {
           <p>{this.props.text}</p>
         </div>
         <div className="quoteAuthor">
-          <p>By: {this.props.author}</p>
+          By: {this.props.author}
+          <button>:)</button>
+          <button>:(</button>
         </div>
       </div>
     );
