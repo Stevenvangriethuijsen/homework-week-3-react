@@ -85,6 +85,13 @@ export default class QuoteSearcher extends React.Component {
   };
 
   render() {
+    const likes = this.state.quotes.filter(
+      object => object.quoteStyling === "liked"
+    );
+    const dislikes = this.state.quotes.filter(
+      object => object.quoteStyling === "disliked"
+    );
+    console.log(likes.length);
     if (this.state.fetching) {
       return <h3>Loading...</h3>;
     } else {
@@ -103,7 +110,9 @@ export default class QuoteSearcher extends React.Component {
               />
             </form>
             <h4>{this.state.count} quotes found.</h4>
-            <h3>Liked: ... / Disliked: ...</h3>
+            <h3>
+              Liked: {likes.length} / Disliked: {dislikes.length}
+            </h3>
           </div>{" "}
           {this.state.quotes.map(object => {
             // console.log(object);
