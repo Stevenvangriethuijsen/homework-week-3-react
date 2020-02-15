@@ -17,7 +17,13 @@ export default class QuoteSearcher extends React.Component {
     const quotesList = parsedResponse.results;
     const quotesCount = parsedResponse.count;
     // console.log("quoteslist from cdidmount", quotesList);
-    this.setState({ fetching: false, quotes: quotesList, count: quotesCount });
+    const quotes = quotesList.map(quote => {
+      return {
+        ...quote,
+        quoteStyling: "nostyle"
+      };
+    });
+    this.setState({ fetching: false, quotes: quotes, count: quotesCount });
   };
   render() {
     if (this.state.fetching) {
@@ -33,11 +39,13 @@ export default class QuoteSearcher extends React.Component {
           </div>{" "}
           {this.state.quotes.map(object => {
             // console.log(object);
+            console.log(object.quoteStyling);
             return (
               <Quote
                 text={object.quoteText}
                 author={object.quoteAuthor}
                 key={object._id}
+                style={object.quoteStyling}
               />
             );
           })}

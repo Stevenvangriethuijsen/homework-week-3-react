@@ -3,7 +3,7 @@ import "./Quote.css";
 
 export default class Quote extends React.Component {
   state = {
-    quoteStyling: "nostyle"
+    quoteStyling: this.props.style
   };
 
   dislike = () => {
