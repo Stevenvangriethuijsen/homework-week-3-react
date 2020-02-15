@@ -26,16 +26,23 @@ export default class QuoteSearcher extends React.Component {
       return <h3>Nothing found that matches your parameters</h3>;
     } else {
       // console.log("logging state quotes from render", this.state.quotes);
-      return this.state.quotes.map(object => {
-        // console.log(object);
-        return (
-          <Quote
-            text={object.quoteText}
-            author={object.quoteAuthor}
-            key={object._id}
-          />
-        );
-      });
+      return (
+        <div>
+          <div>
+            <h3>Liked: ... / Disliked: ...</h3>
+          </div>{" "}
+          {this.state.quotes.map(object => {
+            // console.log(object);
+            return (
+              <Quote
+                text={object.quoteText}
+                author={object.quoteAuthor}
+                key={object._id}
+              />
+            );
+          })}
+        </div>
+      );
     }
   }
 }
