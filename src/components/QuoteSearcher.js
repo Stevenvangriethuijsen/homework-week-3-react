@@ -28,20 +28,20 @@ export default class QuoteSearcher extends React.Component {
   // };
 
   handleChange = event => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.setState({ searchParam: event.target.value });
   };
 
   handleSubmit = event => {
     this.setState({ fetching: true });
-    console.log("is handle submit being called");
+    // console.log("is handle submit being called");
     event.preventDefault();
     return fetch(
       `https://quote-garden.herokuapp.com/quotes/search/${this.state.searchParam}`
     )
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         const quoteList = data.results;
         const quoteCount = data.count;
         const quoteandstyle = quoteList.map(quote => {
@@ -61,8 +61,8 @@ export default class QuoteSearcher extends React.Component {
   disliked = id => {
     const dislikedQuote = this.state.quotes.map(object => {
       if (object._id === id) {
-        console.log(id, "logging argument id");
-        console.log(object._id, object.quoteStyling);
+        // console.log(id, "logging argument id");
+        // console.log(object._id, object.quoteStyling);
         return { ...object, quoteStyling: "disliked" };
       } else {
         return object;
@@ -74,8 +74,8 @@ export default class QuoteSearcher extends React.Component {
   liked = id => {
     const likedQuote = this.state.quotes.map(object => {
       if (object._id === id) {
-        console.log(id, "logging argument id");
-        console.log(object._id, object.quoteStyling);
+        // console.log(id, "logging argument id");
+        // console.log(object._id, object.quoteStyling);
         return { ...object, quoteStyling: "liked" };
       } else {
         return object;
@@ -91,7 +91,7 @@ export default class QuoteSearcher extends React.Component {
     const dislikes = this.state.quotes.filter(
       object => object.quoteStyling === "disliked"
     );
-    console.log(likes.length);
+    // console.log(likes.length);
     if (this.state.fetching) {
       return <h3>Loading...</h3>;
     } else {

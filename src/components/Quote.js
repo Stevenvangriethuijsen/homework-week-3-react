@@ -7,7 +7,7 @@ export default class Quote extends React.Component {
   };
 
   dislike = () => {
-    console.log("test idquote", this.props.quoteId);
+    // console.log("test idquote", this.props.quoteId);
     this.props.disliked(this.props.quoteId);
   };
   like = () => {
